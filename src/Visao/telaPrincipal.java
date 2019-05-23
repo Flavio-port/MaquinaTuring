@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author comp9
@@ -27,39 +29,60 @@ public class telaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtFita = new javax.swing.JTextField();
+        btnCriaTabela = new javax.swing.JButton();
+        txtQuantidadeEstado = new javax.swing.JTextField();
+        txtTokens = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaAcoes = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("telaPrincipal");
+        setPreferredSize(new java.awt.Dimension(600, 550));
+        getContentPane().setLayout(null);
 
-        jTextField1.setText("jTextField1");
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtFita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtFitaActionPerformed(evt);
             }
         });
+        getContentPane().add(txtFita);
+        txtFita.setBounds(234, 27, 262, 29);
 
-        jTextField2.setText("jTextField2");
+        btnCriaTabela.setText("Cria Tabela de Ações");
+        btnCriaTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriaTabelaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCriaTabela);
+        btnCriaTabela.setBounds(396, 74, 133, 23);
+        getContentPane().add(txtQuantidadeEstado);
+        txtQuantidadeEstado.setBounds(234, 75, 98, 20);
+        getContentPane().add(txtTokens);
+        txtTokens.setBounds(234, 108, 98, 20);
 
-        jTextField3.setText("jTextField3");
-
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Informe");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(41, 34, 157, 14);
 
-        jLabel2.setText("Estado");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Informe a quantidade deestados");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(41, 78, 157, 14);
 
-        jLabel3.setText("Tokens");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Informe os Tokens");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(109, 114, 89, 14);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaAcoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -70,69 +93,41 @@ public class telaPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaAcoes);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 178, 510, 150);
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Os tokens de espaço e simbolo inicial já estão cadastrados");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 139, 280, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel3))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(73, 73, 73))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 38, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/imgTelaPrincipal.jpg"))); // NOI18N
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, -90, 550, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCriaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaTabelaActionPerformed
+       
+    }//GEN-LAST:event_btnCriaTabelaActionPerformed
+
+    private void txtFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFitaActionPerformed
+             String fita= txtFita.getText().trim();
+             String numeroEstado= txtQuantidadeEstado.getText().trim();
+             String Tokens= txtTokens.getText().trim();
+        
+        try{
+           fita.isEmpty();
+             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos corretamente");
+         }catch{
+             
+             
+         }
+    }//GEN-LAST:event_txtFitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,15 +165,16 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCriaTabela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tabelaAcoes;
+    private javax.swing.JTextField txtFita;
+    private javax.swing.JTextField txtQuantidadeEstado;
+    private javax.swing.JTextField txtTokens;
     // End of variables declaration//GEN-END:variables
 }
