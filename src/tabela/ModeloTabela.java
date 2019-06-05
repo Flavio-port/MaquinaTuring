@@ -4,27 +4,70 @@ package tabela;
 
 
     import java.util.ArrayList;
+import javafx.scene.layout.RowConstraints;
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTabela extends AbstractTableModel {
 
     //aqui transformei em coluna cada propriedade de Funcionario
     //que eu quero que seja exibida na tabela  
-    private String colunas[];
-    private String coluna;
-    private String linha;
-    private final int COLUNA_NOME = 0;
+     String colunas[];
+     String coluna;
+     String linha;
+     ArrayList<Estado> estados;
+     
+    
+    /*private final int COLUNA_NOME = 0;
     private final int COLUNA_IDADE = 1;
     private final int COLUNA_MATRICULA = 2;
-    private final int COLUNA_ADMITIDO = 3;
+    private final int COLUNA_ADMITIDO = 3;*/
 
     public ModeloTabela(String linha, String coluna) {
         this.linha= linha;
         this.coluna= coluna;
     } 
-    Public mo
+    public void montaTabela(){
+        colunas[0]="Estado";
+        colunas[1]=">";
+        colunas[2]="*";       
+        String aux= "";
+        int adiciona=3;
+        for(int i=0;i<Integer.parseInt(linha.trim());i++){
+           Estado est = new Estado(i);
+           estados.add(est);
+        }
+        for(int i=0;i<coluna.length();i++){
+        
+           if(coluna.charAt(i)==',' || coluna.charAt(i)==' ' || i==coluna.length()){
+               colunas[adiciona]= aux.trim();
+               aux="";               
+           }
+           else{
+               aux+=coluna.charAt(i);
+           }
+        }
+        
+    }
 
-    //retorna se a célula é editável ou não
+    @Override
+    public int getRowCount() {
+        return estados.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+       return colunas.length;
+    }
+
+    @Override
+    public Object getValueAt(int i, int i1) {
+          Estado estados = this.estados.get(getRowCount());
+
+      return estados.getNome();
+    }
+}
+
+  /* //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
@@ -33,7 +76,7 @@ public class ModeloTabela extends AbstractTableModel {
     //retorna o total de itens(que virarão linhas) da nossa lista
     @Override
     public int getRowCount() {
-        return funcionarios.size();
+        return estados.size();
     }
     //retorna o total de colunas da tabela
     @Override
@@ -49,18 +92,7 @@ public class ModeloTabela extends AbstractTableModel {
     //determina o tipo de dado da coluna conforme seu indice
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        switch (columnIndex) {
-            case COLUNA_NOME:
-                return String.class;
-            case COLUNA_IDADE:
-                return Integer.class;
-            case COLUNA_MATRICULA:
-                return Integer.class;
-            case COLUNA_ADMITIDO:
-                return Boolean.class;
-            default:
-                return String.class;
-        }
+             return String.class;      
     }
 
     //preenche cada célula da tabela
@@ -105,5 +137,5 @@ public class ModeloTabela extends AbstractTableModel {
         //este método é que notifica a tabela que houve alteração de dados
         fireTableDataChanged();
     }
-}
+}*/
 
