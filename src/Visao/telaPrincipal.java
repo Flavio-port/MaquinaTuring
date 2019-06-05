@@ -6,6 +6,7 @@
 package Visao;
 
 import javax.swing.JOptionPane;
+import tabela.ModeloTabela;
 
 /**
  *
@@ -84,13 +85,13 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         tabelaAcoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tabelaAcoes);
@@ -112,21 +113,16 @@ public class telaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaTabelaActionPerformed
-       
-    }//GEN-LAST:event_btnCriaTabelaActionPerformed
-
-    private void txtFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFitaActionPerformed
              String fita= txtFita.getText().trim();
              String numeroEstado= txtQuantidadeEstado.getText().trim();
              String Tokens= txtTokens.getText().trim();
-        
-        try{
-           fita.isEmpty();
-             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos corretamente");
-         }catch{
-             
-             
-         }
+             ModeloTabela modelo = new ModeloTabela(numeroEstado,Tokens);
+             tabelaAcoes.setModel(modelo);
+    }//GEN-LAST:event_btnCriaTabelaActionPerformed
+
+    private void txtFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFitaActionPerformed
+            
+         
     }//GEN-LAST:event_txtFitaActionPerformed
 
     /**
