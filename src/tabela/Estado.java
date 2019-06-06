@@ -7,7 +7,7 @@ package tabela;
 
 public class Estado {
 
-    int nome;
+    int id;
     String acao;
 
     public Estado(int nome) {
@@ -15,16 +15,16 @@ public class Estado {
     }
 
     public Estado(int nome, String acao) {
-        this.nome = nome;
+        this.id = nome;
         this.acao = acao;
     }
 
     public int getNome() {
-        return nome;
+        return id;
     }
 
     public void setNome(int nome) {
-        this.nome = nome;
+        this.id = nome;
     }
 
     public String getAcao() {

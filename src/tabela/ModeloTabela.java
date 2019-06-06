@@ -1,78 +1,84 @@
-
 package tabela;
 
-
-
-    import java.util.ArrayList;
+import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTabela extends AbstractTableModel {
 
-    //aqui transformei em coluna cada propriedade de Funcionario
-    //que eu quero que seja exibida na tabela  
-     String colunas[];
-     String coluna;
-     String linha;
-     ArrayList<Estado> estados;
-     
+    String tokens;
+    String estados;
+    ArrayList<Estado> linhas;
+    ArrayList<Tokens> colunas;
     
-    int COLUNA_ESTADO;
-    int COLUNA_INICIAL;
 
-    public ModeloTabela(String linha, String coluna) {
-        this.linha= linha;
-        this.coluna= coluna;
-    } 
-    public void montaTabela(){
-        
-        int contColunas=0;
-        colunas[0]="Estado";
-        COLUNA_ESTADO=contColunas;
+    public ModeloTabela(String estados, String tokens) {
+        this.estados = estados;
+        this.tokens = tokens;
+    }
+
+    public void montaTabela() {
+
+        int contColunas = 0;
+        Tokens coluna = new Tokens();
+        coluna.setCod(contColunas);
+        coluna.setNome("Estado"); 
+        colunas.add(coluna);
         contColunas++;
-        colunas[1]=">";
-        COLUNA_INICIAL=contColunas;
-        colunas[2]="*";
+       
+        coluna = new Tokens();
+        coluna.setCod(contColunas);
+        coluna.setNome(">"); 
+        colunas.add(coluna);
+        contColunas++;
         
-        String aux= "";
-        int adiciona=3;
-        for(int i=0;i<Integer.parseInt(linha.trim());i++){
-           Estado est = new Estado(i);
-           estados.add(est);
+        coluna = new Tokens();
+        coluna.setCod(contColunas);
+        coluna.setNome("*"); 
+        colunas.add(coluna);
+        contColunas++;
+        
+        
+
+        String aux = "";
+  
+        for (int i = 0; i < Integer.parseInt(estados.trim()); i++) {
+            Estado est = new Estado(i);
+            linhas.add(est);
         }
-        for(int i=0;i<coluna.length();i++){
-        
-           if(coluna.charAt(i)==',' || coluna.charAt(i)==' ' || i==coluna.length()){
-               colunas[adiciona]= aux.trim();
-               adiciona++;
-               aux="";               
-           }
-           else{
-               aux+=coluna.charAt(i);
-           }
+        for (int i = 0; i < tokens.length(); i++) {
+
+            if (tokens.charAt(i) == ',' || tokens.charAt(i) == ' ' || i == tokens.length()) {
+                coluna = new Tokens();
+                coluna.setCod(contColunas);
+                coluna.setNome(aux.trim());
+                colunas.add(coluna);
+                aux = "";
+            } else {
+                aux += tokens.charAt(i);
+            }
         }
-        
+
     }
 
     @Override
     public int getRowCount() {
-        return estados.size();
+        return linhas.size();
     }
 
     @Override
     public int getColumnCount() {
-       return colunas.length;
+        return colunas.size();
     }
 
     @Override
     public Object getValueAt(int i, int i1) {
-          Estado estados = this.estados.get(getRowCount());
-
-      return estados.getNome();
+       
+        return null;
     }
 }
 
-  /* //retorna se a célula é editável ou não
+/* //retorna se a célula é editável ou não
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
@@ -143,4 +149,3 @@ public class ModeloTabela extends AbstractTableModel {
         fireTableDataChanged();
     }
 }*/
-
