@@ -1,65 +1,96 @@
 package tabela;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.swing.JTable;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 
 public class ModeloTabela extends AbstractTableModel {
 
-    String tokens;
-    String estados;
-    ArrayList<Estado> linhas;
-    ArrayList<Tokens> colunas;
-    
+    private Map<Integer,List<String>> linhas = new HashMap<>();
+    private List<String> colunas = Stream.of(new String[]{"Estado", ">", "*"}).collect(Collectors.toList());
 
-    public ModeloTabela(String estados, String tokens) {
-        this.estados = estados;
-        this.tokens = tokens;
-    }
-
-    public void montaTabela() {
-
-        int contColunas = 0;
-        Tokens coluna = new Tokens();
-        coluna.setCod(contColunas);
-        coluna.setNome("Estado"); 
-        colunas.add(coluna);
-        contColunas++;
-       
-        coluna = new Tokens();
-        coluna.setCod(contColunas);
-        coluna.setNome(">"); 
-        colunas.add(coluna);
-        contColunas++;
+    public ModeloTabela(int qtdEstados, String tokens) {
         
-        coluna = new Tokens();
-        coluna.setCod(contColunas);
-        coluna.setNome("*"); 
-        colunas.add(coluna);
-        contColunas++;
-        
-        
-
-        String aux = "";
-  
-        for (int i = 0; i < Integer.parseInt(estados.trim()); i++) {
-            Estado est = new Estado(i);
-            linhas.add(est);
-        }
-        for (int i = 0; i < tokens.length(); i++) {
-
-            if (tokens.charAt(i) == ',' || tokens.charAt(i) == ' ' || i == tokens.length()) {
-                coluna = new Tokens();
-                coluna.setCod(contColunas);
-                coluna.setNome(aux.trim());
-                colunas.add(coluna);
-                aux = "";
-            } else {
-                aux += tokens.charAt(i);
+        if(tokens != null || tokens.trim().length() > 0){
+            
+            List tokenSplit;
+            
+            if(tokens.indexOf(",") > 0){
+               tokenSplit = new ArrayList<>(Arrays.asList(tokens.split(",")));
+            }else{
+                tokenSplit = new ArrayList<>(Arrays.asList(tokens.split(" ")));
             }
+            
+            colunas.addAll(tokenSplit);
         }
-
+        
+        for(int i = 0; i < qtdEstados ; i++) {
+            
+            ArrayList<String> col = new ArrayList();
+            col.add(i+1 + "");
+            
+            for(int j = 1; j < colunas.size(); j++) {
+                col.add("");
+            }
+            
+            linhas.put(i, col);
+        }
     }
+
+//    public void montaTabela() {
+//
+//        int contColunas = 0;
+//        Tokens coluna = new Tokens();
+//        coluna.setCod(contColunas);
+//        coluna.setNome("Estado"); 
+//        colunas.add(coluna);
+//        contColunas++;
+//        
+//        
+//        
+//       
+//        coluna = new Tokens();
+//        coluna.setCod(contColunas);
+//        coluna.setNome(">"); 
+//        colunas.add(coluna);
+//        contColunas++;
+//        
+//        coluna = new Tokens();
+//        coluna.setCod(contColunas);
+//        coluna.setNome("*"); 
+//        colunas.add(coluna);
+//        contColunas++;
+//        
+//        
+//
+//        String aux = "";
+//  
+//        for (int i = 0; i < Integer.parseInt(estados.trim()); i++) {
+//            Estado est = new Estado(i);
+//            linhas.add(est);
+//        }
+//        for (int i = 0; i < tokens.length(); i++) {
+//
+//            if (tokens.charAt(i) == ',' || tokens.charAt(i) == ' ' || i == tokens.length()) {
+//                coluna = new Tokens();
+//                coluna.setCod(contColunas);
+//                coluna.setNome(aux.trim());
+//                colunas.add(coluna);
+//                aux = "";
+//            } else {
+//                aux += tokens.charAt(i);
+//            }
+//        }
+//     
+//    }
 
     @Override
     public int getRowCount() {
@@ -72,9 +103,27 @@ public class ModeloTabela extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int i, int i1) {
+    public String getValueAt(int l, int c) {
+        return linhas.get(l).get(c);
+    }
+    
+   @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        
+        if(columnIndex > 0){
+            return true;
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
        
-        return null;
+        linhas.get(rowIndex).set(columnIndex, (String) aValue);
+        
+        //este método é que notifica a tabela que houve alteração de dados
+        fireTableDataChanged();
     }
 }
 

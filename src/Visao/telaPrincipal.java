@@ -110,7 +110,8 @@ public class telaPrincipal extends javax.swing.JFrame {
              String fita= txtFita.getText().trim();
              String numeroEstado= txtQuantidadeEstado.getText().trim();
              String Tokens= txtTokens.getText().trim();
-             ModeloTabela modelo = new ModeloTabela(numeroEstado,Tokens);
+             ModeloTabela modelo = new ModeloTabela(5,"a,b");
+   
              tabelaAcoes.setModel(modelo);
              tabelaAcoes.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnCriaTabelaActionPerformed
