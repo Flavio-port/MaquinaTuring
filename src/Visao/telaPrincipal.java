@@ -40,10 +40,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaAcoes = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("telaPrincipal");
+        setMaximumSize(new java.awt.Dimension(250, 250));
+        setMinimumSize(new java.awt.Dimension(250, 250));
         setPreferredSize(new java.awt.Dimension(600, 550));
         getContentPane().setLayout(null);
 
@@ -68,20 +69,17 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().add(txtTokens);
         txtTokens.setBounds(234, 108, 98, 20);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Informe");
+        jLabel1.setText("Informe a Fita :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(41, 34, 157, 14);
+        jLabel1.setBounds(18, 34, 180, 14);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Informe a quantidade deestados");
+        jLabel2.setText("Informe a quantidade de Estados :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(41, 78, 157, 14);
+        jLabel2.setBounds(18, 78, 210, 14);
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Informe os Tokens");
+        jLabel3.setText("Informe os Tokens :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(109, 114, 89, 14);
+        jLabel3.setBounds(18, 114, 180, 14);
 
         tabelaAcoes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,12 +102,8 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 139, 280, 14);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/imgTelaPrincipal.jpg"))); // NOI18N
-        jLabel5.setToolTipText("");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, -90, 550, 520);
-
-        pack();
+        setSize(new java.awt.Dimension(632, 428));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaTabelaActionPerformed
@@ -118,6 +112,7 @@ public class telaPrincipal extends javax.swing.JFrame {
              String Tokens= txtTokens.getText().trim();
              ModeloTabela modelo = new ModeloTabela(numeroEstado,Tokens);
              tabelaAcoes.setModel(modelo);
+             tabelaAcoes.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnCriaTabelaActionPerformed
 
     private void txtFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFitaActionPerformed
@@ -166,7 +161,6 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaAcoes;
     private javax.swing.JTextField txtFita;

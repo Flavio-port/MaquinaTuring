@@ -4,7 +4,7 @@ package tabela;
 
 
     import java.util.ArrayList;
-import javafx.scene.layout.RowConstraints;
+
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTabela extends AbstractTableModel {
@@ -17,19 +17,23 @@ public class ModeloTabela extends AbstractTableModel {
      ArrayList<Estado> estados;
      
     
-    /*private final int COLUNA_NOME = 0;
-    private final int COLUNA_IDADE = 1;
-    private final int COLUNA_MATRICULA = 2;
-    private final int COLUNA_ADMITIDO = 3;*/
+    int COLUNA_ESTADO;
+    int COLUNA_INICIAL;
 
     public ModeloTabela(String linha, String coluna) {
         this.linha= linha;
         this.coluna= coluna;
     } 
     public void montaTabela(){
+        
+        int contColunas=0;
         colunas[0]="Estado";
+        COLUNA_ESTADO=contColunas;
+        contColunas++;
         colunas[1]=">";
-        colunas[2]="*";       
+        COLUNA_INICIAL=contColunas;
+        colunas[2]="*";
+        
         String aux= "";
         int adiciona=3;
         for(int i=0;i<Integer.parseInt(linha.trim());i++){
@@ -40,6 +44,7 @@ public class ModeloTabela extends AbstractTableModel {
         
            if(coluna.charAt(i)==',' || coluna.charAt(i)==' ' || i==coluna.length()){
                colunas[adiciona]= aux.trim();
+               adiciona++;
                aux="";               
            }
            else{
