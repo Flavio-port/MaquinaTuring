@@ -125,6 +125,12 @@ public class ModeloTabela extends AbstractTableModel {
         //este método é que notifica a tabela que houve alteração de dados
         fireTableDataChanged();
     }
+    
+    public String getColumnName(int columnIndex) {
+        return colunas.get(columnIndex);
+    }
+     
+    
 }
 
 /* //retorna se a célula é editável ou não

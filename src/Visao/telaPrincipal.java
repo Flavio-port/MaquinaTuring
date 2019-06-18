@@ -5,6 +5,7 @@
  */
 package Visao;
 
+import Maquina.Maquina;
 import javax.swing.JOptionPane;
 import tabela.ModeloTabela;
 
@@ -40,6 +41,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaAcoes = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("telaPrincipal");
@@ -102,6 +104,15 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 139, 280, 14);
 
+        jButton1.setText("Executa Maquina");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(400, 120, 130, 23);
+
         setSize(new java.awt.Dimension(632, 428));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +131,11 @@ public class telaPrincipal extends javax.swing.JFrame {
             
          
     }//GEN-LAST:event_txtFitaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Maquina maquina = new Maquina();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +174,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriaTabela;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
