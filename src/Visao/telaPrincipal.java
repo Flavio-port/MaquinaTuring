@@ -15,6 +15,9 @@ import tabela.ModeloTabela;
  */
 public class telaPrincipal extends javax.swing.JFrame {
 
+    ModeloTabela modelo;
+    String fita;
+    
     /**
      * Creates new form telaPrincipal
      */
@@ -118,10 +121,10 @@ public class telaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaTabelaActionPerformed
-             String fita= txtFita.getText().trim();
+             fita= txtFita.getText().trim();
              String numeroEstado= txtQuantidadeEstado.getText().trim();
              String Tokens= txtTokens.getText().trim();
-             ModeloTabela modelo = new ModeloTabela(5,"a,b");
+             modelo = new ModeloTabela(5,"a,b");
    
              tabelaAcoes.setModel(modelo);
              tabelaAcoes.setVisible(rootPaneCheckingEnabled);
@@ -134,7 +137,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Maquina maquina = new Maquina();
-        
+        maquina.analisaFita(fita, modelo);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

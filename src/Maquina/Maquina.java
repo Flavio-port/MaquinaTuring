@@ -5,10 +5,9 @@
  */
 package Maquina;
 
-/**
- *
- * @author Agil Suporte
- */
+import tabela.ModeloTabela;
+
+
 public class Maquina {
 
     String resultado;
@@ -17,14 +16,13 @@ public class Maquina {
     String direcao;
     char escreve;
 
-    public String analisaFita(String fita/*tabela*/) {// fita 
+    public String analisaFita(String fita, ModeloTabela modelo) {// fita 
 
         int cabecote = 0;
         StringBuffer fitaB = new StringBuffer(fita);
 
         while (!estado.equals("Fim")) {
-            //chamar função busca transicao que ira trazer a transicao do item > e o estado 0 que sera 
-            //exemplo 0,>,D se a busca for nulla erro tabela de transição errada 
+            
             desmembraTransicao(transicao);
             fitaB.setCharAt(cabecote, escreve);
             if (direcao.toUpperCase().equals("D")) {

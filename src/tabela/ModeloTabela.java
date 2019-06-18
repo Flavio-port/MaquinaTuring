@@ -129,6 +129,27 @@ public class ModeloTabela extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         return colunas.get(columnIndex);
     }
+    
+    
+    public String getTransicao(Integer estado, String token){
+        List<String> linha = linhas.get(estado);
+        
+        if(linha != null){
+            int idxColuna = 0;
+            
+            for(; idxColuna < colunas.size(); idxColuna ++){
+                if(token.equals(colunas.get(idxColuna))){
+                    break;
+                }
+            }
+            
+            //TODO: idx > colunas.size
+            
+            return linha.get(idxColuna);
+        }
+        
+        return null;
+    }
      
     
 }
