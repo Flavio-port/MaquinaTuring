@@ -6,6 +6,7 @@
 package Visao;
 
 import Maquina.Maquina;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import tabela.ModeloTabela;
 
@@ -155,7 +156,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         try {
             String resultado = maquina.analisaFita(fita, modelo);//">*** **"
             JOptionPane.showMessageDialog(this, "Executado com sucesso o seu resultado é: " + resultado);
-        } catch (Exception ex) {
+        } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(this, "Erro em sua fita ou em sua tabela de ações");
         }
 
