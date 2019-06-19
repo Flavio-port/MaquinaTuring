@@ -10,7 +10,9 @@ package tabela;
  * @author Agil Suporte
  */
 public class Tokens {
+
     int cod;
+    String nome;
 
     public int getCod() {
         return cod;
@@ -27,5 +29,5 @@ public class Tokens {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    String nome;
+
 }
