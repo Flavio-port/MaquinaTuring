@@ -15,22 +15,28 @@ public class Maquina {
     String direcao;
     char escreve;
     StringBuffer fitaB;
+    String ler;
 
     public String analisaFita(String fita, ModeloTabela modelo) {// fita 
 
         int cabecote = 0;
         estado = "0";
-        escreve = '>';
         int inicio = 0;
         montaFita(fita);
-        transicao = modelo.getTransicao(Integer.parseInt(estado), escreve);
+        ler =""+fitaB.charAt(cabecote);
+        transicao = modelo.getTransicao(Integer.parseInt(estado), fitaB.charAt(cabecote));
+        StringBuffer verificaFita = null;
         while (!estado.equals("Fim")) {
             if (inicio != 0) {
+                ler =""+fitaB.charAt(cabecote);
                 transicao = modelo.getTransicao(Integer.parseInt(estado), fitaB.charAt(cabecote));
+                desmembraTransicao(transicao);
+                resultado += escreve;
+            } else {
+                desmembraTransicao(transicao);
+                resultado = "" + escreve;
             }
 
-            desmembraTransicao(transicao);
-            fitaB.setCharAt(cabecote, escreve);
             if (direcao.toUpperCase().equals("D")) {
                 cabecote++;
                 if (inicio == 0) {
@@ -47,8 +53,9 @@ public class Maquina {
             }
 
         }
+
         tiraIcone();
-        return resultado = fitaB.toString();
+        return resultado;
     }
 
     public void desmembraTransicao(String transicao) {
