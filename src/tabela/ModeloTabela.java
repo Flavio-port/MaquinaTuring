@@ -14,6 +14,9 @@ public class ModeloTabela extends AbstractTableModel {
 
     private Map<Integer, List<String>> linhas = new HashMap<>();
     private List<String> colunas = Stream.of(new String[]{"Estado", ">", "*", "_"}).collect(Collectors.toList());
+    public ModeloTabela(int qtdEstados){
+        montaTabela(qtdEstados);
+    }
 
     public ModeloTabela(int qtdEstados, String tokens) {
 
@@ -29,18 +32,9 @@ public class ModeloTabela extends AbstractTableModel {
 
             colunas.addAll(tokenSplit);
         }
+        montaTabela(qtdEstados);
 
-        for (int i = 0; i < qtdEstados; i++) {
-
-            ArrayList<String> col = new ArrayList();
-            col.add(i + "");
-
-            for (int j = 1; j < colunas.size(); j++) {
-                col.add("");
-            }
-
-            linhas.put(i, col);
-        }
+      
     }
 
     @Override
@@ -103,6 +97,19 @@ public class ModeloTabela extends AbstractTableModel {
     public void setValueAt1(int i, int i0, String d) {
         linhas.get(i).set(i0, d);
         fireTableDataChanged();
+    }
+    public void montaTabela( int qtdEstados){
+          for (int i = 0; i < qtdEstados; i++) {
+
+            ArrayList<String> col = new ArrayList();
+            col.add(i + "");
+
+            for (int j = 1; j < colunas.size(); j++) {
+                col.add("");
+            }
+
+            linhas.put(i, col);
+        }
     }
 
 }

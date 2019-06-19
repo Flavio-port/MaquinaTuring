@@ -135,8 +135,14 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void btnCriaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriaTabelaActionPerformed
         fita = txtFita.getText().trim();
         String numeroEstado = txtQuantidadeEstado.getText().trim();
-        String Tokens = txtTokens.getText().trim();
-        modelo = new ModeloTabela(Integer.parseInt(numeroEstado), Tokens.toUpperCase());
+        
+        String tokens = txtTokens.getText().trim();
+        if(tokens.length() < 1){
+            modelo = new ModeloTabela(Integer.parseInt(numeroEstado));
+        }else{
+            modelo = new ModeloTabela(Integer.parseInt(numeroEstado), tokens.toUpperCase());
+        }
+        
         tabelaAcoes.setModel(modelo);
         tabelaAcoes.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnCriaTabelaActionPerformed
@@ -148,13 +154,14 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Maquina maquina = new Maquina();
-        /* modelo.setValueAt1(0, 1, "0,>,d");
+         modelo.setValueAt1(0, 1, "0,>,d");
          modelo.setValueAt1(0, 2, "0,*,D");
-          modelo.setValueAt1(0, 3, "1,_,D");
+          modelo.setValueAt1(0, 3, "1,*,D");
            modelo.setValueAt1(1, 2, "1,*,d");
-            modelo.setValueAt1(1, 3, "Fim,_,d");*/
+           modelo.setValueAt1(1, 3, "2,_,e");
+            modelo.setValueAt1(1, 3, "Fim,_,d");
         try {
-            String resultado = maquina.analisaFita(fita, modelo);//">*** **"
+            String resultado = maquina.analisaFita(">** **", modelo);//""fita
             JOptionPane.showMessageDialog(this, "Executado com sucesso o seu resultado é: " + resultado);
         } catch (HeadlessException ex) {
             JOptionPane.showMessageDialog(this, "Erro em sua fita ou em sua tabela de ações");
