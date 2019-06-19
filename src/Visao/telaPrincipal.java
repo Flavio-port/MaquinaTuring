@@ -47,9 +47,6 @@ public class telaPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnExecutaMaquina = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        itemSoma = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("telaPrincipal");
@@ -131,20 +128,6 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(180, 50, 150, 14);
 
-        jMenu1.setText("Operações");
-
-        itemSoma.setText("Soma");
-        itemSoma.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemSomaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(itemSoma);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
-
         setSize(new java.awt.Dimension(632, 481));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -171,13 +154,12 @@ public class telaPrincipal extends javax.swing.JFrame {
 
     private void btnExecutaMaquinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutaMaquinaActionPerformed
         Maquina maquina = new Maquina();
-         modelo.setValueAt1(0, 1, "0,>,d");
-         modelo.setValueAt1(0, 2, "0,*,D");
-          modelo.setValueAt1(0, 3, "1,*,D");
-           modelo.setValueAt1(1, 2, "1,*,d");
-           modelo.setValueAt1(1, 3, "2,_,e");
-           modelo.setValueAt1(2, 2, "2,_,d");
-            modelo.setValueAt1(3, 3, "Fim,_,d");
+        modelo.setValueAt1(0, 1, "0,>,d");
+          modelo.setValueAt1(0, 2, "0,*,d");
+            modelo.setValueAt1(0, 3, "1,-,d");
+              modelo.setValueAt1(1, 2, "1,*,d");
+                modelo.setValueAt1(1, 3, "2,-,e");
+                  modelo.setValueAt1(2, 2, "Fim,-,d"); //adição
         try {
             String resultado = maquina.analisaFita(fita, modelo);//""
             JOptionPane.showMessageDialog(this, "Executado com sucesso o seu resultado é: " + resultado);
@@ -191,25 +173,6 @@ public class telaPrincipal extends javax.swing.JFrame {
     private void txtTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTokensActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTokensActionPerformed
-
-    private void itemSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSomaActionPerformed
-       Maquina maquina = new Maquina();
-        fita = txtFita.getText().trim();
-        modelo = new ModeloTabela(3);
-        modelo.setValueAt1(0, 1, "0,>,d");
-        modelo.setValueAt1(0, 2, "0,*,D");
-        modelo.setValueAt1(0, 3, "1,*,D");
-        modelo.setValueAt1(1, 2, "1,*,d");
-        modelo.setValueAt1(1, 3, "2,_,e");
-        modelo.setValueAt1(2, 2, "Fim,_,d");
-        try {
-            String resultado = maquina.analisaFita(">** **", modelo);//""fita
-            JOptionPane.showMessageDialog(this, "Executado com sucesso o seu resultado é: " + resultado);
-        } catch (HeadlessException ex) {
-            JOptionPane.showMessageDialog(this, "Erro em sua fita ou em sua tabela de ações");
-        }
-
-    }//GEN-LAST:event_itemSomaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,14 +212,11 @@ public class telaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriaTabela;
     private javax.swing.JButton btnExecutaMaquina;
-    private javax.swing.JMenuItem itemSoma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaAcoes;
     private javax.swing.JTextField txtFita;

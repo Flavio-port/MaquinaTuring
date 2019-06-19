@@ -13,7 +13,7 @@ import javax.swing.table.AbstractTableModel;
 public class ModeloTabela extends AbstractTableModel {
 
     private Map<Integer, List<String>> linhas = new HashMap<>();
-    private List<String> colunas = Stream.of(new String[]{"Estado", ">", "*", "_"}).collect(Collectors.toList());
+    private List<String> colunas = Stream.of(new String[]{"Estado", ">", "*","-"}).collect(Collectors.toList());
     public ModeloTabela(int qtdEstados){
         montaTabela(qtdEstados);
     }

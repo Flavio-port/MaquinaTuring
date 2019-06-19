@@ -19,7 +19,7 @@ public class Maquina {
 
     public String analisaFita(String fita, ModeloTabela modelo) {// fita 
 
-        int cabecote = 0;
+       int cabecote = 0;
         estado = "0";
         int inicio = 0;
         montaFita(fita);
@@ -87,15 +87,15 @@ public class Maquina {
         fitaB = new StringBuffer(fitaAntes);
         for (int i = 0; i < fitaB.length(); i++) {
             if (fitaB.charAt(i) == ' ') {
-                fitaB.setCharAt(i, '_');
+                fitaB.setCharAt(i, '-');
             }
         }
-        fitaB.append("_");
+        fitaB.append("-");
     }
 
     public void tiraIcone() {
         for (int i = 0; i < fitaB.length(); i++) {
-            if (fitaB.charAt(i) == '_') {
+            if (fitaB.charAt(i) == '-') {
                 fitaB.setCharAt(i, ' ');
             }
         }
